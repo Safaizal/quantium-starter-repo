@@ -2,7 +2,6 @@ import pandas as pd
 import dash
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
-from datetime import datetime
 
 data = pd.read_csv('data/final_df.csv')
 
@@ -11,7 +10,7 @@ data['date'] = pd.to_datetime(data['date'])
 app = Dash(__name__)
 
 app.layout = html.Div([
-    html.H1('Sales data for Pink morsels', style={'textAlign': 'center', 'color': '#000000', 'fontSize': '40px'}),
+    html.H1('Sales data for Pink morsels', style={'textAlign': 'center', 'color': '#000000', 'fontSize': '40px'}, id='header'),
     html.Label('Select region'),
     dcc.RadioItems(
         id = "region-filter",
@@ -55,3 +54,4 @@ if __name__ == '__main__':
 
 # print(df.dtypes)
 # print(df.head())
+###############################################################################################################################################3
