@@ -1,20 +1,16 @@
-import pytest
-from dash.testing.application_runners import import_app
-from selenium import webdriver
-@pytest.fixture
-def app_runner(dash_duo):
-    app = import_app("app")
-    return dash_duo.start_server(app)
+from app import app as dash_app
 
-def test_header_is_present(dash_duo):
 
-    header = dash_duo.find_element('header')
-    assert header is not None, "Header element not found"
+def test_header_exists(dash_duo):
+    dash_duo.start_server(dash_app)
+    dash_duo.wait_for_element("#header", timeout=10)
 
-def test_visualization_present(dash_duo):
-    visualization = dash_duo.find_element('visualization')
-    assert visualization is not None, "Visualization is not present"
 
-def test_region_picker_present(dash_duo):
-    region_picker = dash_duo.find_element('region-picker')
-    assert region_picker is not None, "Region picker is not present"
+def test_Region_filter_exists(dash_duo):
+    dash_duo.start_server(dash_app)
+    dash_duo.wait_for_element("#region-filter", timeout=20)
+
+
+def test_Chart_exists(dash_duo):
+    dash_duo.start_server(dash_app)
+    dash_duo.wait_for_element("#sales-chart", timeout=20)
