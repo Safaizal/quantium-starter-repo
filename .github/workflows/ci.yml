@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Grant execute permission to run_tests.sh
-      run: chmod +x run_tests.sh  # ✅ FIX: Grant execution permission
+      run: chmod +x run_tests.sh
 
     - name: Run tests
-      run: ./run_tests.sh  # ✅ Now it should run without "Permission denied"
+      run: ./run_tests.sh  # Now it should run without "Permission denied"
