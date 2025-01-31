@@ -1,0 +1,31 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main       # Trigger on pushes to the 'main' branch
+  pull_request:
+    branches:
+      - main       # Trigger on pull requests to the 'main' branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest      # This defines the operating system for the runner
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3  # Checks out the repository code
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4  # Sets up the Python environment
+      with:
+        python-version: '3.12'   # Specify the Python version you want to use
+
+    - name: Install dependencies
+      run: |
+        python -m venv env         # Create a virtual environment
+        source env/bin/activate    # Activate the virtual environment
+        pip install -r requirements.txt  # Install dependencies from requirements file
+    
+    - name: Run tests
+      run: ./run_tests.sh         # Executes the bash script to run tests
