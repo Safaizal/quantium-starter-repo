@@ -30,4 +30,4 @@ jobs:
       run: chmod +x run_tests.sh
 
     - name: Run tests
-      run: ./run_tests.sh  # Now it should run without "Permission denied"
+      run: .github/workflows/run_tests.sh  # Now it should run without "Permission denied"
